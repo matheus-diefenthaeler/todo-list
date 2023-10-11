@@ -10,10 +10,10 @@ RUN apk add amazon-corretto-21
 
 RUN apk add maven
 
-RUN apk add --no-cache curl
+#RUN apk add --no-cache curl
 
 RUN mvn -f /home/app/pom.xml clean package
 
 RUN cp /home/app/target/*.jar /usr/local/lib/app.jar
-EXPOSE 8080
+EXPOSE 8082
 ENTRYPOINT ["java","-jar","-Xmx900m","-Xms650m","/usr/local/lib/app.jar"]
